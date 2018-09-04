@@ -3,8 +3,8 @@ Arcade Game
 
 ## Table of Contents
 
-* [How to Run](#How to Run)
-* [How to Play](#How to Play)
+* [How to Run](#How-to-Run)
+* [How to Play](#How-to-Play)
 
 ## How to Run
 
