@@ -157,7 +157,7 @@ var Engine = (function(global) {
               player.x  > enemy.x - 50 &&
               player.y < enemy.y + 50 &&
               player.y > enemy.y - 50 ) {
-              //player.init();
+              player.init();
             }
         });
     }
