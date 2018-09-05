@@ -152,10 +152,10 @@ var Engine = (function(global) {
 
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
-            if (player.x < enemy.x + 50 &&
-              player.x  > enemy.x - 50 &&
-              player.y < enemy.y + 50 &&
-              player.y > enemy.y - 50 ) {
+            if (player.x < enemy.x + 60 &&
+              player.x  > enemy.x - 60 &&
+              player.y < enemy.y + 60 &&
+              player.y > enemy.y - 60 ) {
               player.init();
             }
         });
