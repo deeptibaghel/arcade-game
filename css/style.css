@@ -1,3 +1,16 @@
 body {
     text-align: center;
 }
+
+#congrats {
+    visibility: hidden;
+}
+
+#replay {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #6B7BCC;
+    color: #fff;
+    margin-top: 10px;
+}

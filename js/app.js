@@ -22,25 +22,27 @@ Enemy.prototype.render = function() {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-
+//Player class constructor function
 var Player = function() {
   this.xMin = 0;
   this.yMin = 0;
   this.xMax = 420; //window.ctx.canvas.width
   this.yMax = 440;
-  this.speed = 10;
+  this.speed = 20;
   this.score = 0;
   this.sprite = 'images/char-boy.png';
   this.init();
-}
+};
 
+//Player update function
 Player.prototype.update = function() {
   if(this.x < this.xMin)
     this.x = this.x + this.speed;
 
   if(this.y <= this.yMin){
     this.score += 1;
-    document.getElementById('score').textContent= this.score;
+    document.getElementById('score').textContent = this.score;
+    this.checkScore();
     this.init();
   }
 
@@ -50,17 +52,23 @@ Player.prototype.update = function() {
 
   if(this.y > this.yMax)
     this.y = this.y - this.speed;
-}
+};
 
+
+//initialize player and resend to start position
 Player.prototype.init = function() {
   this.y = 440;
   this.x = 220;
-}
+};
 
+
+//render player
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//handle keys for player
+//movement in all 4 directions is allowed within the board
 Player.prototype.handleInput = function(key) {
     if(key === 'left')
         this.x = this.x - this.speed;
@@ -70,9 +78,14 @@ Player.prototype.handleInput = function(key) {
         this.y = this.y - this.speed;
     else if(key === 'down')
         this.y = this.y + this.speed;
-}
+};
 
-
+//Winning score is set to 5 , game restarts on clicking play again button
+Player.prototype.checkScore = function() {
+    if(this.score === 5) {
+        document.getElementById("congrats").style.visibility = 'visible';
+    }
+};
 
 var allEnemies = [];
 var pathHeight = 83, waterHeight = 63;
@@ -100,4 +113,11 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+//Event listener for play again button
+document.querySelector('#replay').addEventListener('click', function() {
+  player.score = 0;
+  document.getElementById('score').textContent = player.score;
+  document.getElementById("congrats").style.visibility = 'hidden';
 });
